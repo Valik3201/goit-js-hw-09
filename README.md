@@ -14,7 +14,7 @@ This task involves creating a color switcher with "Start" and "Stop" buttons. Th
 ### Files: 02-timer.html, 02-timer.js
 
 **Description:**
-This task focuses on a countdown timer with an interface for selecting an end date. It utilizes the flatpickr library for cross-browser date and time selection. The timer starts counting down once the user selects a future date and clicks the "Start" button. The timer interface displays days, hours, minutes, and seconds in the format xx:xx:xx:xx. The timer stops when it reaches 00:00:00:00. To ensure proper functionality, the page needs to be reloaded to select a new date and restart the timer.
+This task focuses on a countdown timer with an interface for selecting an end date. It utilizes [the flatpickr library](https://flatpickr.js.org) for cross-browser date and time selection. The timer starts counting down once the user selects a future date and clicks the "Start" button. The timer interface displays days, hours, minutes, and seconds in the format xx:xx:xx:xx. The timer stops when it reaches 00:00:00:00. To ensure proper functionality, the page needs to be reloaded to select a new date and restart the timer.
 
 ## Promise Generator
 
@@ -23,6 +23,6 @@ This task focuses on a countdown timer with an interface for selecting an end da
 **Description:**
 This task involves a promise generator where users input the first delay in milliseconds, the delay increment for each subsequent promise, and the total number of promises to be created. Upon submitting the form, the `createPromise` function is called as many times as specified, creating promises that fulfill or reject after the given delays. The optional notiflix library is suggested for displaying notifications to the user instead of using `console.log()`.
 
-**Note:** For additional practice, the notiflix library is enabled to display notifications to the user instead of `console.log()` statements throughout the project.
+**Note:** For additional practice, [the Notiflix library](https://github.com/notiflix/Notiflix) is enabled to display notifications to the user instead of `console.log()` statements throughout the project.
 
 Explore the project to understand JavaScript timers, date handling, and promises, gaining practical insights into their implementation.
