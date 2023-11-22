@@ -17,7 +17,7 @@ const resetBtn = document.querySelector("button[data-reset]");
 startBtn.disabled = true;
 resetBtn.disabled = true;
 
-let endDate;
+let endDate = null;
 let intervalId;
 let selectedDate;
 
@@ -80,6 +80,11 @@ function convertMs(ms) {
 }
 
 function updateCountdown() {
+  if (!endDate) {
+    clearInterval(intervalId);
+    return;
+  }
+
   const currentDate = new Date().getTime();
   const timeDifference = endDate - currentDate;
 
@@ -94,6 +99,8 @@ function updateCountdown() {
     document.querySelector("[data-seconds]").textContent = "00";
 
     Notiflix.Notify.success("Timer has ended!");
+
+    endDate = null;
 
     return;
   }
@@ -134,4 +141,6 @@ resetBtn.addEventListener("click", function () {
   document.querySelector("[data-hours]").textContent = "00";
   document.querySelector("[data-minutes]").textContent = "00";
   document.querySelector("[data-seconds]").textContent = "00";
+
+  endDate = null;
 });
