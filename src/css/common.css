@@ -68,7 +68,7 @@ button {
   background-color: #ffe20d;
 }
 
-/* ---------- COLOR SWITCHER ---------- */
+/* ---------- Color Switcher ---------- */
 
 .color-switcher-btn {
   display: flex;
@@ -76,8 +76,8 @@ button {
   gap: 1rem;
 }
 
-button[data-start],
-button[data-stop] {
+.color-switcher-btn button[data-start],
+.color-switcher-btn button[data-stop] {
   padding: 1rem 2rem;
   background-color: rgba(265, 265, 265, 0.1);
   color: #000;
@@ -87,14 +87,98 @@ button[data-stop] {
   font-size: 1rem;
 }
 
-button[data-start]:not([disabled]):hover,
-button[data-stop]:not([disabled]):hover {
+.color-switcher-btn button[data-start]:not([disabled]):hover,
+.color-switcher-btn button[data-stop]:not([disabled]):hover {
   background-color: rgba(265, 265, 265, 0.2);
 }
 
-button[data-start]:disabled,
-button[data-stop]:disabled {
+.color-switcher-btn button[data-start]:disabled,
+.color-switcher-btn button[data-stop]:disabled {
   color: rgba(0, 0, 0, 0.5);
   border: 0.125rem solid rgba(0, 0, 0, 0.5);
   cursor: not-allowed;
+}
+
+/* ---------- Countdown Timer ---------- */
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+#datetime-picker {
+  flex: 3 0 200px;
+  border-radius: 0.25rem;
+  border: 1px solid #9ca3af;
+  color: #9ca3af;
+  font-weight: 700;
+  padding-left: 0.25rem;
+  min-height: 25px;
+}
+
+.container button[data-start],
+.container button[data-reset] {
+  flex: 1 0 100px;
+  color: #fafafa;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease-in;
+}
+
+.container button[data-start] {
+  background-color: #008a27;
+}
+
+.container button[data-start]:not(:disabled):hover {
+  background-color: #00bf32;
+}
+
+.container button[data-start]:disabled {
+  background-color: #afffc5;
+  color: #008a27;
+  cursor: not-allowed;
+}
+
+.container button[data-reset] {
+  background-color: #c8170d;
+}
+
+.container button[data-reset]:not(:disabled):hover {
+  background-color: #e91c11;
+}
+
+.container button[data-reset]:disabled {
+  background-color: #ffc8c5;
+  color: #c8170d;
+  cursor: not-allowed;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+}
+
+.field {
+  text-align: center;
+  margin: 0 15px;
+}
+
+.value {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.label {
+  font-size: 1.2em;
+  color: #9e9e9e;
+  text-transform: uppercase;
+  margin-top: 5px;
 }
