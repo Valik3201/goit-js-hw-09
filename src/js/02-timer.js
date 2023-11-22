@@ -129,4 +129,6 @@ resetBtn.addEventListener("click", function () {
   document.querySelector("[data-hours]").textContent = "00";
   document.querySelector("[data-minutes]").textContent = "00";
   document.querySelector("[data-seconds]").textContent = "00";
+
+  endDate = undefined; // Reset endDate value
 });
