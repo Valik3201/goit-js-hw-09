@@ -19,6 +19,7 @@ resetBtn.disabled = true;
 
 let endDate;
 let intervalId;
+let selectedDate;
 
 const options = {
   enableTime: true,
@@ -27,7 +28,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates.length > 0) {
-      const selectedDate = selectedDates[0];
+      selectedDate = selectedDates[0];
 
       if (selectedDate > new Date()) {
         startBtn.disabled = false;
@@ -44,7 +45,7 @@ const options = {
 
         Notiflix.Notify.success(`Selected Date: ${formattedDate}`);
 
-        endDate = selectedDate.getTime();
+        // endDate = selectedDate.getTime();
       } else {
         startBtn.disabled = true;
         resetBtn.disabled = true;
@@ -112,6 +113,8 @@ function updateCountdown() {
 }
 
 startBtn.addEventListener("click", function () {
+  endDate = selectedDate.getTime();
+
   intervalId = setInterval(updateCountdown, 1000);
 
   startBtn.disabled = true;
@@ -129,6 +132,4 @@ resetBtn.addEventListener("click", function () {
   document.querySelector("[data-hours]").textContent = "00";
   document.querySelector("[data-minutes]").textContent = "00";
   document.querySelector("[data-seconds]").textContent = "00";
-
-  endDate = undefined; // Reset endDate value
 });
