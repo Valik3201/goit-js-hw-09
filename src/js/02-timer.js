@@ -93,6 +93,8 @@ function updateCountdown() {
     document.querySelector("[data-minutes]").textContent = "00";
     document.querySelector("[data-seconds]").textContent = "00";
 
+    Notiflix.Notify.success("Timer has ended!");
+
     return;
   }
 
