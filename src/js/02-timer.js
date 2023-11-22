@@ -107,18 +107,12 @@ function updateCountdown() {
 
   const { days, hours, minutes, seconds } = convertMs(timeDifference);
 
-  document.querySelector("[data-days]").textContent = days
-    .toString()
-    .padStart(2, "0");
-  document.querySelector("[data-hours]").textContent = hours
-    .toString()
-    .padStart(2, "0");
-  document.querySelector("[data-minutes]").textContent = minutes
-    .toString()
-    .padStart(2, "0");
-  document.querySelector("[data-seconds]").textContent = seconds
-    .toString()
-    .padStart(2, "0");
+  document.querySelector("[data-days]").textContent = addLeadingZero(days);
+  document.querySelector("[data-hours]").textContent = addLeadingZero(hours);
+  document.querySelector("[data-minutes]").textContent =
+    addLeadingZero(minutes);
+  document.querySelector("[data-seconds]").textContent =
+    addLeadingZero(seconds);
 }
 
 startBtn.addEventListener("click", function () {
@@ -144,3 +138,7 @@ resetBtn.addEventListener("click", function () {
 
   endDate = null;
 });
+
+function addLeadingZero(value) {
+  return value.toString().padStart(2, "0");
+}
