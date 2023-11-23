@@ -17,9 +17,15 @@ const resetBtn = document.querySelector("button[data-reset]");
 startBtn.disabled = true;
 resetBtn.disabled = true;
 
-let endDate = null;
-let intervalId;
-let selectedDate;
+const countdown = {
+  endDate: null,
+  intervalId: null,
+  selectedDate: null,
+};
+
+function addLeadingZero(value) {
+  return value.toString().padStart(2, "0");
+}
 
 const options = {
   enableTime: true,
@@ -28,9 +34,9 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates.length > 0) {
-      selectedDate = selectedDates[0];
+      countdown.selectedDate = selectedDates[0];
 
-      if (selectedDate > new Date()) {
+      if (countdown.selectedDate > new Date()) {
         startBtn.disabled = false;
         resetBtn.disabled = false;
 
@@ -41,11 +47,9 @@ const options = {
           hour: "numeric",
           minute: "numeric",
           hour12: false,
-        }).format(selectedDate);
+        }).format(countdown.selectedDate);
 
         Notiflix.Notify.success(`Selected Date: ${formattedDate}`);
-
-        // endDate = selectedDate.getTime();
       } else {
         startBtn.disabled = true;
         resetBtn.disabled = true;
@@ -80,27 +84,22 @@ function convertMs(ms) {
 }
 
 function updateCountdown() {
-  if (!endDate) {
-    clearInterval(intervalId);
+  if (!countdown.endDate) {
+    clearInterval(countdown.intervalId);
     return;
   }
 
   const currentDate = new Date().getTime();
-  const timeDifference = endDate - currentDate;
+  const timeDifference = countdown.endDate - currentDate;
 
   if (timeDifference <= 0) {
-    clearInterval(intervalId);
+    clearInterval(countdown.intervalId);
     startBtn.disabled = true;
     resetBtn.disabled = true;
 
-    document.querySelector("[data-days]").textContent = "00";
-    document.querySelector("[data-hours]").textContent = "00";
-    document.querySelector("[data-minutes]").textContent = "00";
-    document.querySelector("[data-seconds]").textContent = "00";
-
     Notiflix.Notify.success("Timer has ended!");
 
-    endDate = null;
+    countdown.endDate = null;
 
     return;
   }
@@ -115,30 +114,29 @@ function updateCountdown() {
     addLeadingZero(seconds);
 }
 
-startBtn.addEventListener("click", function () {
-  endDate = selectedDate.getTime();
-
-  intervalId = setInterval(updateCountdown, 1000);
+function startTimer() {
+  countdown.endDate = countdown.selectedDate.getTime();
+  countdown.intervalId = setInterval(updateCountdown, 1000);
 
   startBtn.disabled = true;
   resetBtn.disabled = false;
-});
+}
 
-resetBtn.addEventListener("click", function () {
-  clearInterval(intervalId);
+function resetTimer() {
+  clearInterval(countdown.intervalId);
   startBtn.disabled = true;
   resetBtn.disabled = true;
 
   document.querySelector("#datetime-picker").value =
     "Enter a future date to begin the countdown";
+
   document.querySelector("[data-days]").textContent = "00";
   document.querySelector("[data-hours]").textContent = "00";
   document.querySelector("[data-minutes]").textContent = "00";
   document.querySelector("[data-seconds]").textContent = "00";
 
-  endDate = null;
-});
-
-function addLeadingZero(value) {
-  return value.toString().padStart(2, "0");
+  countdown.endDate = null;
 }
+
+startBtn.addEventListener("click", startTimer);
+resetBtn.addEventListener("click", resetTimer);
