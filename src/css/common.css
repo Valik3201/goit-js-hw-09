@@ -219,7 +219,6 @@ input {
 
 .form button {
   font-family: monospace;
-  text-transform: lowercase;
   width: 100%;
   background-color: #ffd300;
   padding: 10px 15px;
