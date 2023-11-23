@@ -8,7 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
-  color: #212121;
+  color: #10162f;
   line-height: 1.5;
 }
 
@@ -111,14 +111,15 @@ button {
 }
 
 #datetime-picker {
+  min-height: 30px;
   flex: 3 0 200px;
   border-radius: 0.25rem;
   border: 1px solid #9ca3af;
   color: #9ca3af;
   font-size: 1rem;
   font-weight: 700;
-  padding-left: 0.25rem;
-  min-height: 30px;
+  padding-left: 0.5rem;
+  margin: 0;
 }
 
 .container button[data-start],
@@ -128,7 +129,7 @@ button {
   font-weight: 700;
   border: none;
   border-radius: 0.25rem;
-  transition: background-color 0.2s ease-in;
+  transition: background-color 0.25s ease-in;
   font-size: 1rem;
 }
 
@@ -216,11 +217,9 @@ input {
   box-sizing: border-box;
 }
 
-input:invalid {
-  border-color: #ff6b6b;
-}
-
 .form button {
+  font-family: monospace;
+  text-transform: lowercase;
   width: 100%;
   background-color: #ffd300;
   padding: 10px 15px;
