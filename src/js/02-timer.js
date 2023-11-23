@@ -49,7 +49,7 @@ const options = {
           hour12: false,
         }).format(countdown.selectedDate);
 
-        Notiflix.Notify.success(`Selected Date: ${formattedDate}`);
+        Notiflix.Notify.info(`Selected Date: ${formattedDate}`);
       } else {
         startBtn.disabled = true;
         resetBtn.disabled = true;
