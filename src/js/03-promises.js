@@ -4,7 +4,7 @@ import Notiflix from "notiflix";
 // Styles for Notiflix
 Notiflix.Notify.init({
   fontSize: "1rem",
-  width: "500px",
+  width: "400px",
   cssAnimationStyle: "from-bottom",
   closeButton: false,
   useIcon: false,
@@ -28,9 +28,7 @@ function onSubmitForm(event) {
   // Check for valid input values
   if (initialDelay < 0 || stepValue <= 0 || amount.value <= 0) {
     // Display a warning message if any input is not a valid non-negative number
-    Notiflix.Notify.warning(
-      "❗ Please enter positive values for delay, step, and amount."
-    );
+    Notiflix.Notify.warning("❗ Please enter positive value");
   } else {
     // Loop to create and handle promises based on user input
     for (let i = 1; i <= amount.value; i++) {
