@@ -2,11 +2,11 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 
-// Import Notiflix library
-import Notiflix from "notiflix";
+// Import Notiflix as a Module
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 // Styles for Notiflix
-Notiflix.Notify.init({
+Notify.init({
   fontSize: "1rem",
   width: "500px",
   cssAnimationStyle: "from-bottom",
@@ -49,11 +49,11 @@ const options = {
           hour12: false,
         }).format(countdown.selectedDate);
 
-        Notiflix.Notify.info(`Selected Date: ${formattedDate}`);
+        Notify.info(`Selected Date: ${formattedDate}`);
       } else {
         startBtn.disabled = true;
         resetBtn.disabled = true;
-        Notiflix.Notify.failure("Please choose a date in the future");
+        Notify.failure("Please choose a date in the future");
       }
     }
   },
@@ -97,7 +97,7 @@ function updateCountdown() {
     startBtn.disabled = true;
     resetBtn.disabled = true;
 
-    Notiflix.Notify.success("Timer has ended!");
+    Notify.success("Timer has ended!");
 
     countdown.endDate = null;
 

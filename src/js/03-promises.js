@@ -1,8 +1,8 @@
-// Import Notiflix library
-import Notiflix from "notiflix";
+// Import Notiflix as a Module
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 // Styles for Notiflix
-Notiflix.Notify.init({
+Notify.init({
   fontSize: "1rem",
   width: "450px",
   cssAnimationStyle: "from-bottom",
@@ -28,7 +28,7 @@ function onSubmitForm(event) {
   // Check for valid input values
   if (initialDelay < 0 || stepValue <= 0 || amount.value <= 0) {
     // Display a warning message if any input is not a valid non-negative number
-    Notiflix.Notify.warning("❗ Please enter positive value");
+    Notify.warning("❗ Please enter positive value");
   } else {
     // Loop to create and handle promises based on user input
     for (let i = 1; i <= amount.value; i++) {
@@ -44,7 +44,7 @@ function onSubmitForm(event) {
           // Calculate the elapsed time
           const elapsedTime = performance.now() - startTime;
           // Displaying a success notification when the promise is fulfilled
-          Notiflix.Notify.success(
+          Notify.success(
             `✅ Fulfilled promise ${position} in ${delay}ms (Actual: ${elapsedTime.toFixed(
               0
             )}ms)`
@@ -54,7 +54,7 @@ function onSubmitForm(event) {
           // Calculate the elapsed time
           const elapsedTime = performance.now() - startTime;
           // Displaying an error notification when the promise is rejected
-          Notiflix.Notify.failure(
+          Notify.failure(
             `❌ Rejected promise ${position} in ${delay}ms (Actual: ${elapsedTime.toFixed(
               0
             )}ms)`
